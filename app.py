@@ -59,8 +59,8 @@ iface = gr.Interface(
         gr.Slider(minimum=0, maximum=10, label="Petal Width"),
     ],
     outputs=[
-        gr.outputs.Label(num_top_classes=3),
-        gr.outputs.Textbox(type="auto", label="Evaluación del modelo")
+        gr.Label(num_top_classes=3),
+        gr.Textbox(type="auto", label="Evaluación del modelo")
     live=True,
     title='Detector de especies de iris, en Red Neuronal',
     description='Este modelo está desarrollado para la clasificación Multiclase de flores de la especie Iris.',
