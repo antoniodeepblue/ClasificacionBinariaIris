@@ -63,7 +63,7 @@ iface = gr.Interface(
         gr.Textbox(type="text", label="Evaluación del modelo")
     ],    
     live=True,
-    title='Detector de especies de iris, en Red Neuronal',
+    title='Detector de especies de iris, en Red Neuronal (menos neuronas, más capas)',
     description='Este modelo está desarrollado para la clasificación Multiclase de flores de la especie Iris.',
     article='Antonio Fernández Salcedo. Practicas Saturdays.AI. Aplicación desarrollada con fines docentes',
     theme='peach'   
