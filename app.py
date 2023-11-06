@@ -53,6 +53,10 @@ iface = gr.Interface(
     ],
     outputs=gr.Label(num_top_classes=3),
     live=True,
+    title='Detector de especies de iris',
+    description='Este modelo está desarrollado para la clasificación de flores de la especie Iris.',
+    article='Aplicación desarrollada con fines docentes en el curso Saturdays.ai',
+    theme='peach'   
 )
 
 # Ejecutar la interfaz
