@@ -61,6 +61,7 @@ iface = gr.Interface(
     outputs=[
         gr.Label(num_top_classes=3),
         gr.Textbox(type="auto", label="Evaluación del modelo")
+    ],    
     live=True,
     title='Detector de especies de iris, en Red Neuronal',
     description='Este modelo está desarrollado para la clasificación Multiclase de flores de la especie Iris.',
