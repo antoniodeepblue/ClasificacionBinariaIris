@@ -60,7 +60,7 @@ iface = gr.Interface(
     ],
     outputs=[
         gr.Label(num_top_classes=3),
-        gr.Textbox(type="auto", label="Evaluación del modelo")
+        gr.Textbox(type="text", label="Evaluación del modelo")
     ],    
     live=True,
     title='Detector de especies de iris, en Red Neuronal',
