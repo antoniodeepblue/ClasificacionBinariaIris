@@ -23,7 +23,8 @@ X_test = scaler.transform(X_test)
 
 # Construir el modelo
 model = Sequential([
-    Dense(64, activation='relu', input_dim=4),  # Capa oculta con 64 neuronas y función de activación ReLU
+    Dense(20, activation='relu', input_dim=4),  # Capa oculta con 10 neuronas y función de activación ReLU
+    Dense(10, activation='relu'),  # Capa oculta con 10 neuronas y función de activación ReLU
     Dense(3, activation='softmax')  # Capa de salida con 3 neuronas para las clases de iris
 ])
 
@@ -33,7 +34,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 # Entrenar el modelo
-model.fit(X_train, y_train, epochs=50, batch_size=32, validation_data=(X_test, y_test))
+model.fit(X_train, y_train, epochs=15, batch_size=32, validation_data=(X_test, y_test))
 
 # Definir una función para la predicción
 def predict_iris_species(sepal_length, sepal_width, petal_length, petal_width):
