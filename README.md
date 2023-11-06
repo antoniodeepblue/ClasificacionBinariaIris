@@ -1,5 +1,5 @@
 ---
-title: Iris
+title: Red Neuronal Iris
 emoji: 🌖
 colorFrom: purple
 colorTo: green
