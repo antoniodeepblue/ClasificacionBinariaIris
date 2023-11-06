@@ -36,27 +36,31 @@ model.compile(optimizer='adam',
 # Entrenar el modelo
 model.fit(X_train, y_train, epochs=15, batch_size=32, validation_data=(X_test, y_test))
 
-# Definir una función para la predicción
-def predict_iris_species(sepal_length, sepal_width, petal_length, petal_width):
+# Definir una función para la predicción y evaluación
+def predict_and_evaluate(sepal_length, sepal_width, petal_length, petal_width):
     input_data = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
     scaled_input_data = scaler.transform(input_data)
     prediction = model.predict(scaled_input_data)
-    return iris.target_names[np.argmax(prediction)]
+    predicted_species = iris.target_names[np.argmax(prediction)]
+    
+    # Evaluar el modelo
+    test_loss, test_acc = model.evaluate(X_test, y_test, verbose=0)
+    
+    return predicted_species, f'Exactitud en el conjunto de prueba: {test_acc:.4f}'
 
-# Evaluar el modelo
-test_loss, test_acc = model.evaluate(X_test, y_test, verbose=2)
-print(f'Exactitud en el conjunto de prueba: {test_acc}')    
 
 # Definir la interfaz Gradio
 iface = gr.Interface(
-    fn=predict_iris_species,
+    fn=predict_and_evaluate,
     inputs=[
         gr.Slider(minimum=0, maximum=10, label="Sepal Length"),
         gr.Slider(minimum=0, maximum=10, label="Sepal Width"),
         gr.Slider(minimum=0, maximum=10, label="Petal Length"),
         gr.Slider(minimum=0, maximum=10, label="Petal Width"),
     ],
-    outputs= [gr.Label(num_top_classes=3), gr.Label(print(f'Exactitud en el conjunto de prueba: {test_acc}')),],
+    outputs=[
+        gr.outputs.Label(num_top_classes=3),
+        gr.outputs.Textbox(type="auto", label="Evaluación del modelo")
     live=True,
     title='Detector de especies de iris, en Red Neuronal',
     description='Este modelo está desarrollado para la clasificación Multiclase de flores de la especie Iris.',
