@@ -43,6 +43,10 @@ def predict_iris_species(sepal_length, sepal_width, petal_length, petal_width):
     prediction = model.predict(scaled_input_data)
     return iris.target_names[np.argmax(prediction)]
 
+# Evaluar el modelo
+test_loss, test_acc = model.evaluate(X_test, y_test, verbose=2)
+print(f'Exactitud en el conjunto de prueba: {test_acc}')    
+
 # Definir la interfaz Gradio
 iface = gr.Interface(
     fn=predict_iris_species,
