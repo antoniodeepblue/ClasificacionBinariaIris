@@ -1,7 +1,7 @@
 ---
-title: Red Neuronal Iris 2
+title: 📊 Clasificacion Binaria Iris 
 emoji: 🌖
-colorFrom: purple
+colorFrom: blue
 colorTo: green
 sdk: gradio
 sdk_version: 4.1.1
